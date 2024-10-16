@@ -42,7 +42,7 @@ runs:
 
             // https://octokit.github.io/rest.js/v19#actions-list-workflow-runs-for-repo
             const WORKFLOW_RUNS_FOR_REPO_RESPONSE = await github.rest.actions.listWorkflowRunsForRepo({
-              owner: context.payload.organization.login,
+              owner: context.payload.organization?.login || context.payload.sender?.login,
               repo: context.payload.repository.name,
               head_sha: context.payload.after || GITHUB_SHA
             })
