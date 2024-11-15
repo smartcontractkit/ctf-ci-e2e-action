@@ -30,6 +30,9 @@ inputs:
   test_download_vendor_packages_command:
     required: false
     description: The command to download the go modules
+  gati_token:
+    required: false
+    description: GATI token used to pull private repos
 
 runs:
   using: composite
@@ -41,7 +44,11 @@ runs:
         go-version-file: ${{ inputs.go_mod_path }}
         check-latest: true
         cache: false
-
+    - name: Setup git config for private repo access
+      if: inputs.github_token
+      shell: bash
+      run: git config --global url."https://x-access-token:${{ inputs.gati_token }}@github.com/".insteadOf "https://github.com/" && \
+        go env -w GOPRIVATE=github.com/smartcontractkit/* 
     - name: Set go cache keys
       shell: bash
       id: go-cache-dir

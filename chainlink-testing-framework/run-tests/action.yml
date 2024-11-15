@@ -79,6 +79,9 @@ inputs:
     required: false
     description: The check name for publishing the reports
     default: Smoke Test Results
+  gati_token:
+    required: false
+    description: Token provided by GATI to pull from private repos
   token:
     required: false
     description: The GITHUB_TOKEN for the workflow
@@ -230,6 +233,7 @@ runs:
         QA_KUBECONFIG: ${{ inputs.QA_KUBECONFIG }}
         should_tidy: ${{ inputs.should_tidy }}
         no_cache: ${{ inputs.no_cache }}
+        gati_token: ${{ inputs.gati_token }}
 
     - name: Replace chainlink/integration-tests deps
       if: ${{ inputs.dep_chainlink_integration_tests }}
