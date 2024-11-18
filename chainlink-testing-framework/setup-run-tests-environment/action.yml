@@ -73,7 +73,7 @@ runs:
         should_tidy: ${{ inputs.should_tidy }}
         no_cache: ${{ inputs.no_cache }}
         test_download_vendor_packages_command: ${{ inputs.test_download_vendor_packages_command }}
-        gati_token: ${{ gati_token }}
+        gati_token: ${{ inputs.gati_token }}
 
     # Setup AWS cred and K8s context
     - name: Configure AWS Credentials
