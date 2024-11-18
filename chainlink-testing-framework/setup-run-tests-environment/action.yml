@@ -64,7 +64,7 @@ runs:
     # Go setup and caching
     - name: Setup Go
       if: inputs.go_necessary == 'true'
-      uses: smartcontractkit/chainlink-github-actions/chainlink-testing-framework/setup-go@cb38c6b0a0d6cb620f603d883f5e6903fbb21b53 # v2.3.32
+      uses: smartcontractkit/chainlink-github-actions/chainlink-testing-framework/setup-go@321c461e99707fae75fbb44efda3e7a1fc85e8a2 # v2.3.32
       with:
         go_version: ${{ inputs.go_version }}
         go_mod_path: ${{ inputs.go_mod_path }}
