@@ -44,11 +44,11 @@ runs:
         go-version-file: ${{ inputs.go_mod_path }}
         check-latest: true
         cache: false
-    - name: Setup git config for private repo access
-      if: inputs.github_token
+    - name: Setup Go with private repo access
       shell: bash
-      run: git config --global url."https://x-access-token:${{ inputs.gati_token }}@github.com/".insteadOf "https://github.com/" && \
-        go env -w GOPRIVATE=github.com/smartcontractkit/* 
+      run: |
+        git config --global url."https://x-access-token:${{ inputs.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
+        go env -w GOPRIVATE=github.com/smartcontractkit/*
     - name: Set go cache keys
       shell: bash
       id: go-cache-dir
